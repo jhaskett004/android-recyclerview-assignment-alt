@@ -21,16 +21,25 @@ public class AdapterList extends RecyclerView.Adapter {
 //  the recyclerView and manage the interaction with the items in the list
 
     private List<Inbox> mItems;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, Inbox obj, int position);
+    }
 
     public AdapterList(List<Inbox> items) {
         this.mItems = items;
+    }
+
+    public void setOnItemClickListener(final OnItemClickListener itemClickListener) {
+        this.mListener = itemClickListener;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater lyInflater = LayoutInflater.from(parent.getContext());
-        View itemView = lyInflater.inflate(R.layout.inbox_single_line_layout, parent);
+        View itemView = lyInflater.inflate(R.layout.inbox_single_line_layout, parent, false);
         RecyclerView.ViewHolder vh = new InboxViewHolder(itemView);
         return vh;
     }
@@ -58,6 +67,9 @@ public class AdapterList extends RecyclerView.Adapter {
         public TextView date;
         public TextView letter;
         public TextView message;
+        public View lyt_parent;
+
+
 
         public InboxViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +79,15 @@ public class AdapterList extends RecyclerView.Adapter {
             date = itemView.findViewById(R.id.the_date);
             letter = itemView.findViewById(R.id.thumbnail_letter);
             message = itemView.findViewById(R.id.message_body);
+            lyt_parent = itemView.findViewById(R.id.inbox_single_parent);
+
+            lyt_parent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.onItemClick(v, mItems.get(getLayoutPosition()), getLayoutPosition());
+                }
+            });
+
         }
     }
 

@@ -7,6 +7,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="inbox_single_parent_theme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/spacing_large</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:minHeight">?android:attr/actionBarSize</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
     <style name="thumbnail_theme">
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
@@ -29,14 +39,15 @@
     <style name="sender_address_theme">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">9dp</item>
+        <item name="android:layout_marginTop">4dp</item>
         <item name="android:textSize">10dp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="message_body_theme">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">3dp</item>
         <item name="android:textSize">10dp</item>
         <item name="android:maxLines">1</item>
         <item name="android:textColor">@color/grey_20</item>

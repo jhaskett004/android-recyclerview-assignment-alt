@@ -1,6 +1,7 @@
 package com.ualr.recyclerviewassignment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,10 +21,11 @@ import java.util.List;
 //  Implement a new method to delete the corresponding item in the list
 // TODO 08. Create a new method to add a new item on the top of the list. Use the DataGenerator class to create the new item to be added.
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterList.OnItemClickListener{
 
     private FloatingActionButton mFAB;
     private ActivityListMultiSelectionBinding mBinding;
+    private ConstraintLayout mParent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
         // Did the setup of a new RecyclerView instance to display the item list properly
         // Define the layout of each item in the list
         RecyclerView inboxListView = mBinding.recyclerView;
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         inboxListView.setLayoutManager(layoutManager);
-
 
         // Created a new instance of the created Adapter class and bind it to the RecyclerView instance created in step 03
         AdapterList adapter = new AdapterList(items);
         inboxListView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(this);
 
         mFAB = findViewById(R.id.fab);
         mFAB.setOnClickListener(new View.OnClickListener() {
@@ -59,5 +61,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    //
+    @Override
+    public void onItemClick(View view, Inbox obj, int position) {
+        mParent = findViewById(R.id.inbox_single_parent);
+        mParent.setBackgroundColor(getResources().getColor(R.color.grey_20));
+    }
+
+
+
 
 }
