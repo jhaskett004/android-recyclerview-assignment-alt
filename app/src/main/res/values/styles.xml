@@ -7,6 +7,57 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="thumbnail_theme">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginTop">@dimen/spacing_large</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_large</item>
+        <item name="android:layout_marginStart">@dimen/spacing_large</item>
+        <item name="android:tint">@color/grey_80</item>
+    </style>
+
+    <style name="sender_name_theme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/spacing_smlarge</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_large</item>
+        <item name="android:layout_marginStart">@dimen/spacing_large</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="sender_address_theme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">9dp</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="message_body_theme">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/grey_20</item>
+    </style>
+
+    <style name="the_date_theme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:textSize">11dp</item>
+        <item name="android:textColor">@color/light_blue_500</item>
+    </style>
+
+    <style name="thumbnail_letter_theme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">19dp</item>
+        <item name="android:textColor">@color/overlay_light_90</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
 </resources>
