@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements AdapterList.OnIte
     private FloatingActionButton mFAB;
     private ActivityListMultiSelectionBinding mBinding;
     private ConstraintLayout mParent;
+    private AdapterList mAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements AdapterList.OnIte
         inboxListView.setLayoutManager(layoutManager);
 
         // Created a new instance of the created Adapter class and bind it to the RecyclerView instance created in step 03
-        AdapterList adapter = new AdapterList(items);
+        AdapterList adapter = new AdapterList(this, items);
         inboxListView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(this);
@@ -65,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements AdapterList.OnIte
     //
     @Override
     public void onItemClick(View view, Inbox obj, int position) {
-        mParent = findViewById(R.id.inbox_single_parent);
-        mParent.setBackgroundColor(getResources().getColor(R.color.grey_20));
+        mAdapter.toggleItemState(position);
+
     }
 
 

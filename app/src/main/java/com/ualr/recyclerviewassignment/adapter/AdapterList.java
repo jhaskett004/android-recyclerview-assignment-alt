@@ -1,6 +1,7 @@
 package com.ualr.recyclerviewassignment.adapter;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +22,16 @@ public class AdapterList extends RecyclerView.Adapter {
 //  the recyclerView and manage the interaction with the items in the list
 
     private List<Inbox> mItems;
+    private Context mContext;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
         void onItemClick(View view, Inbox obj, int position);
     }
 
-    public AdapterList(List<Inbox> items) {
+    public AdapterList(Context context, List<Inbox> items) {
         this.mItems = items;
+        this.mContext = context;
     }
 
     public void setOnItemClickListener(final OnItemClickListener itemClickListener) {
@@ -53,6 +56,18 @@ public class AdapterList extends RecyclerView.Adapter {
         inboxViewHolder.address.setText(i.getEmail());
         inboxViewHolder.date.setText(i.getDate());
         inboxViewHolder.message.setText(i.getMessage());
+
+        if (i.isSelected()) {
+            inboxViewHolder.lyt_parent.setBackgroundColor(mContext.getResources().getColor(R.color.grey_10));
+        }
+        else {
+            inboxViewHolder.lyt_parent.setBackgroundColor((mContext.getResources().getColor(R.color.overlay_light_0)));
+        }
+    }
+
+    public void toggleItemState(int position) {
+        this.mItems.get(position).toggleSelection();
+        notifyItemChanged(position);
     }
 
     @Override
@@ -68,8 +83,6 @@ public class AdapterList extends RecyclerView.Adapter {
         public TextView letter;
         public TextView message;
         public View lyt_parent;
-
-
 
         public InboxViewHolder(@NonNull View itemView) {
             super(itemView);
